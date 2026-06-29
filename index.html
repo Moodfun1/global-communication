@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Global Communication - Investissez 20k CFA et gagnez 25k CFA par jour. Plateforme d'investissement nouvelle génération.">
+    <title>Global Communication | Investissement Nouvelle Génération</title>
+    <style>
+        /* ========================================
+           RÉINITIALISATION & VARIABLES CSS
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary-dark: #0a1128;
+            --color-primary-blue: #1e3a8a;
+            --color-accent-violet: #7c3aed;
+            --color-accent-red: #dc2626;
+            --color-light: #f8fafc;
+            --color-text-dark: #0f172a;
+            --color-text-light: #64748b;
+            --color-gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            --color-gradient-accent: linear-gradient(135deg, #7c3aed 0%, #dc2626 100%);
+            --transition-smooth: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --box-shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.1);
+            --box-shadow-medium: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --box-shadow-glow: 0 0 30px rgba(124, 58, 237, 0.2);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ========================================
+           TYPOGRAPHIE & UTILITAIRES
+           ======================================== */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            background: var(--color-gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: var(--color-text-dark);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--color-text-dark);
+        }
+
+        p {
+            color: var(--color-text-light);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ========================================
+           BOUTONS & CTA
+           ======================================== */
+        .btn {
+            position: relative;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            box-shadow: var(--box-shadow-soft);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: var(--color-gradient-accent);
+            color: white;
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-accent-violet);
+            border: 2px solid var(--color-accent-violet);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-accent-violet);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-pulse {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(220, 38, 38, 0.3), 0 10px 40px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(220, 38, 38, 0.6), 0 10px 50px rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        /* ========================================
+           HEADER & NAVIGATION
+           ======================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(248, 250, 252, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+            padding: 1rem 0;
+            box-shadow: var(--box-shadow-soft);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--color-gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text-dark);
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent-violet);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* ========================================
+           SECTION HÉRO
+           ======================================== */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f8fafc 0%, rgba(124, 58, 237, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(30, 58, 138, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+            color: var(--color-text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.9;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========================================
+           SECTION FONCTIONNEMENT
+           ======================================== */
+        .how-it-works {
+            padding: 6rem 0;
+            background: white;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: linear-gradient(135deg, rgba(248, 250, 252, 1) 0%, rgba(241, 245, 249, 1) 100%);
+            border: 2px solid rgba(124, 58, 237, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            opacity: 0;
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        .step-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .step-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .step-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .step-card:hover {
+            border-color: var(--color-accent-violet);
+            box-shadow: var(--box-shadow-glow);
+            transform: translateY(-10px);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--color-gradient-primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-card h3 {
+            margin-bottom: 1rem;
+            color: var(--color-text-dark);
+        }
+
+        .step-card p {
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========================================
+           SECTION STATISTIQUES
+           ======================================== */
+        .stats {
+            padding: 4rem 0;
+            background: var(--color-gradient-primary);
+            color: white;
+            position: relative;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .stat-item p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+
+        /* ========================================
+           SECTION TÉMOIGNAGES
+           ======================================== */
+        .testimonials {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px solid rgba(124, 58, 237, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: var(--transition-smooth);
+            opacity: 0;
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        .testimonial-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .testimonial-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .testimonial-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .testimonial-card:nth-child(4) {
+            animation-delay: 0.4s;
+            border: 2px solid var(--color-accent-violet);
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05) 0%, rgba(248, 250, 252, 1) 100%);
+            box-shadow: var(--box-shadow-glow);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--box-shadow-medium);
+        }
+
+        .rating {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            color: #fbbf24;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--color-text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: var(--color-accent-violet);
+        }
+
+        .badge-special {
+            display: inline-block;
+            background: var(--color-gradient-accent);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* ========================================
+           SECTION AVANTAGES
+           ======================================== */
+        .benefits {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, rgba(124, 58, 237, 0.03) 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--color-accent-violet);
+            transition: var(--transition-smooth);
+            opacity: 0;
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        .benefit-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .benefit-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .benefit-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .benefit-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--box-shadow-medium);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-item h3 {
+            margin-bottom: 0.5rem;
+            color: var(--color-text-dark);
+        }
+
+        /* ========================================
+           CALL-TO-ACTION SECTION
+           ======================================== */
+        .cta-section {
+            padding: 6rem 0;
+            background: var(--color-gradient-primary);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* ========================================
+           BOUTON FLOTTANT
+           ======================================== */
+        .floating-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .floating-btn .btn {
+            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        footer {
+            background: var(--color-primary-dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--color-accent-violet);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--color-accent-red);
+        }
+
+        /* ========================================
+           SCROLL ANIMATIONS
+           ======================================== */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+           ======================================== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding: 2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .steps-container,
+            .testimonials-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .how-it-works,
+            .testimonials,
+            .benefits,
+            .cta-section {
+                padding: 4rem 0;
+            }
+
+            .floating-btn {
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .floating-btn .btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 70vh;
+                margin-top: 100px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
+
+            .stat-item h3 {
+                font-size: 1.5rem;
+            }
+
+            .floating-btn {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================================
+         HEADER & NAVIGATION
+         ======================================== -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon">GC</div>
+                    <span>Global Communication</span>
+                </a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#how-it-works">Fonctionnement</a></li>
+                        <li><a href="#testimonials">Témoignages</a></li>
+                        <li><a href="#benefits">Avantages</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================
+         SECTION HÉRO
+         ======================================== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Prenez les rênes de votre avenir financier aujourd'hui.</h1>
+                <p class="hero-subtitle">Demain, il sera trop tard.</p>
+                <p class="hero-description">
+                    Investissez 20 000 F CFA et gagnez jusqu'à 25 000 F CFA par jour en regardant des vidéos partenaires. 
+                    Retraits instantanés et immédiats dès la tâche accomplie.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary btn-pulse" id="hero-cta">Rejoindre Maintenant</button>
+                    <button class="btn btn-secondary">Découvrir Plus</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION FONCTIONNEMENT
+         ======================================== -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comment ça marche ?</h2>
+                <p class="section-subtitle">Un processus simple et transparent en 3 étapes faciles.</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card scroll-animate">
+                    <div class="step-number">1</div>
+                    <h3>Activez le Pack 20k</h3>
+                    <p>
+                        Investissez votre pack de départ de 20 000 F CFA pour accéder à la plateforme 
+                        et débuter votre parcours vers la liberté financière.
+                    </p>
+                </div>
+
+                <div class="step-card scroll-animate">
+                    <div class="step-number">2</div>
+                    <h3>Regardez & Gagnez</h3>
+                    <p>
+                        Regardez des vidéos partenaires et gagnez 2 500 F CFA par vidéo visionnée. 
+                        Jusqu'à 10 vidéos par jour pour un maximum de 25 000 F CFA.
+                    </p>
+                </div>
+
+                <div class="step-card scroll-animate">
+                    <div class="step-number">3</div>
+                    <h3>Retirez Instantanément</h3>
+                    <p>
+                        Retirez vos gains immédiatement et sans délai dès que vous avez complété vos tâches. 
+                        Pas de complications, juste de l'argent direct sur votre compte.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION STATISTIQUES
+         ======================================== -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item scroll-animate">
+                    <h3>+50,000</h3>
+                    <p>Investisseurs Actifs</p>
+                </div>
+                <div class="stat-item scroll-animate">
+                    <h3>2,500 CFA</h3>
+                    <p>Par Vidéo Visionnée</p>
+                </div>
+                <div class="stat-item scroll-animate">
+                    <h3>25,000 CFA</h3>
+                    <p>Gain Quotidien Maximum</p>
+                </div>
+                <div class="stat-item scroll-animate">
+                    <h3>100%</h3>
+                    <p>Retraits Instantanés</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION AVANTAGES
+         ======================================== -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pourquoi Global Communication ?</h2>
+                <p class="section-subtitle">Les avantages qui font la différence.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Objectif Clair</h3>
+                    <p>Une stratégie transparente pour maximiser vos gains quotidiens sans surprise.</p>
+                </div>
+
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Retraits Éclair</h3>
+                    <p>Accédez à vos gains instantanément et immédiatement après chaque accomplissement.</p>
+                </div>
+
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Sécurité Garantie</h3>
+                    <p>Plateforme sécurisée avec garantie de protection de vos investissements et données.</p>
+                </div>
+
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">🤝</div>
+                    <h3>Support Premium</h3>
+                    <p>Équipe dédiée et conseiller financier personnel pour vous guider à chaque étape.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION TÉMOIGNAGES
+         ======================================== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ce que disent nos investisseurs</h2>
+                <p class="section-subtitle">Des témoignages authentiques de nos clients satisfaits.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card scroll-animate">
+                    <div class="rating">
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "Les retraits sont vraiment instantanés ! J'ai gagné mes premiers 25 000 CFA en une semaine 
+                        et j'ai pu les retirer sans aucun problème."
+                    </p>
+                    <p class="testimonial-author">Mariama T.</p>
+                    <p class="testimonial-role">Investisseuse Active</p>
+                </div>
+
+                <div class="testimonial-card scroll-animate">
+                    <div class="rating">
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "Plateforme fiable et transparente. Le processus est simple et le support est excellent. 
+                        Je recommande vivement à tous mes proches !"
+                    </p>
+                    <p class="testimonial-author">Kofi A.</p>
+                    <p class="testimonial-role">Entrepreneur</p>
+                </div>
+
+                <div class="testimonial-card scroll-animate">
+                    <div class="rating">
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "J'ai augmenté mes revenus de manière significative en quelques mois seulement. 
+                        C'est l'occasion financière que j'attendais !"
+                    </p>
+                    <p class="testimonial-author">Fatoumata K.</p>
+                    <p class="testimonial-role">Gestionnaire de Portefeuille</p>
+                </div>
+
+                <div class="testimonial-card scroll-animate">
+                    <div class="rating">
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                        <span class="star">⭐</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "Service irréprochable, transparence totale et accompagnement personnalisé. 
+                        Alex est un conseiller financier de confiance absolue. Merci pour tout !"
+                    </p>
+                    <p class="testimonial-author">Ousmane B.</p>
+                    <p class="testimonial-role">Directeur Commercial</p>
+                    <span class="badge-special">✓ Conseiller de Confiance - Note 5/5</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION CTA FINALE
+         ======================================== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Prêt à Transformer Votre Avenir ?</h2>
+                <p>
+                    Rejoignez des milliers d'investisseurs qui gagnent déjà 25 000 F CFA par jour. 
+                    Le moment d'agir est maintenant.
+                </p>
+                <button class="btn btn-secondary" id="cta-final">Démarrer Maintenant</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         BOUTON FLOTTANT (WhatsApp)
+         ======================================== -->
+    <div class="floating-btn">
+        <a href="https://wa.me/22879923479" class="btn btn-primary btn-pulse" target="_blank" rel="noopener noreferrer">
+            <span>💬</span>
+            <span>Contacter Alex</span>
+        </a>
+    </div>
+
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Global Communication. Tous droits réservés.</p>
+            <p>Plateforme d'investissement innovante | Retraits Instantanés | Support 24/7</p>
+            <p>
+                Pour toute question, 
+                <a href="https://wa.me/22879923479" target="_blank" rel="noopener noreferrer">contactez Alex</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         SCRIPT JAVASCRIPT
+         ======================================== -->
+    <script>
+        /* ========================================
+           SCROLL ANIMATIONS
+           ======================================== */
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(element => {
+            observer.observe(element);
+        });
+
+        /* ========================================
+           SMOOTH SCROLL NAVIGATION
+           ======================================== */
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const element = document.querySelector(href);
+                    if (element) {
+                        element.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        /* ========================================
+           RIPPLE EFFECT (Effet de vague au clic)
+           ======================================== */
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+
+                // Feedback haptique si disponible
+                if (navigator.vibrate) {
+                    navigator.vibrate(10);
+                }
+            });
+        });
+
+        /* ========================================
+           HOVER EFFECTS ENHANCEMENT
+           ======================================== */
+        const stepCards = document.querySelectorAll('.step-card');
+        stepCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        /* ========================================
+           HEADER SCROLL EFFECT
+           ======================================== */
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.15)';
+                header.style.background = 'rgba(248, 250, 252, 0.98)';
+            } else {
+                header.style.boxShadow = 'var(--box-shadow-soft)';
+                header.style.background = 'rgba(248, 250, 252, 0.95)';
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
+        /* ========================================
+           CTA BUTTONS REDIRECT
+           ======================================== */
+        const heroCTA = document.getElementById('hero-cta');
+        const ctaFinal = document.getElementById('cta-final');
+        const whatsappLink = 'https://wa.me/22879923479';
+
+        if (heroCTA) {
+            heroCTA.addEventListener('click', function() {
+                window.open(whatsappLink, '_blank');
+            });
+        }
+
+        if (ctaFinal) {
+            ctaFinal.addEventListener('click', function() {
+                window.open(whatsappLink, '_blank');
+            });
+        }
+
+        /* ========================================
+           ANIMATION DE COMPTEUR (Optionnel)
+           ======================================== */
+        const statsItems = document.querySelectorAll('.stat-item h3');
+        let animated = false;
+
+        const animateCounters = () => {
+            if (animated) return;
+            
+            statsItems.forEach(item => {
+                const text = item.innerText;
+                const number = parseInt(text.replace(/[^0-9]/g, ''));
+                const increment = number / 50;
+                let current = 0;
+
+                const counter = setInterval(() => {
+                    current += increment;
+                    if (current >= number) {
+                        item.innerText = text;
+                        clearInterval(counter);
+                    } else {
+                        const displayNumber = Math.floor(current).toLocaleString();
+                        const symbol = text.replace(/[0-9,]/g, '');
+                        item.innerText = displayNumber + symbol;
+                    }
+                }, 30);
+            });
+
+            animated = true;
+        };
+
+        window.addEventListener('scroll', () => {
+            const statsSection = document.querySelector('.stats');
+            const rect = statsSection.getBoundingClientRect();
+            
+            if (rect.top < window.innerHeight && !animated) {
+                animateCounters();
+            }
+        });
+
+        /* ========================================
+           PARALLAX EFFECT (Optionnel)
+           ======================================== */
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            
+            if (hero) {
+                hero.style.backgroundPosition = `0px ${scrolled * 0.5}px`;
+            }
+        });
+
+        /* ========================================
+           PRELOAD ANIMATIONS
+           ======================================== */
+        window.addEventListener('load', () => {
+            document.body.style.animation = 'none';
+            console.log('🚀 Global Communication - Site chargé avec succès !');
+        });
+
+        /* ========================================
+           DÉTECTION MOBILE
+           ======================================== */
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            console.log('📱 Version mobile optimisée');
+        } else {
+            console.log('🖥️ Version desktop optimisée');
+        }
+    </script>
+</body>
+</html>
