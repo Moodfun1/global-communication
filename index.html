@@ -866,16 +866,12 @@
     </style>
 </head>
 <body>
-    <!-- ========================================
-         THEME TOGGLE BUTTON
-         ======================================== -->
+    <!-- BOUTON MODE SOMBRE/CLAIR -->
     <button class="theme-toggle" id="themeToggle" title="Basculer le mode sombre">
         🌙
     </button>
 
-    <!-- ========================================
-         HEADER & NAVIGATION
-         ======================================== -->
+    <!-- HEADER AVEC LOGO ET NAVIGATION -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -894,9 +890,7 @@
         </div>
     </header>
 
-    <!-- ========================================
-         SECTION HÉRO
-         ======================================== -->
+    <!-- SECTION HÉRO / ACCUEIL -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -914,9 +908,7 @@
         </div>
     </section>
 
-    <!-- ========================================
-         SECTION FONCTIONNEMENT
-         ======================================== -->
+    <!-- SECTION COMMENT ÇA MARCHE -->
     <section class="how-it-works" id="how-it-works">
         <div class="container">
             <div class="section-title">
@@ -955,9 +947,7 @@
         </div>
     </section>
 
-    <!-- ========================================
-         SECTION STATISTIQUES
-         ======================================== -->
+    <!-- SECTION STATISTIQUES -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
@@ -981,9 +971,7 @@
         </div>
     </section>
 
-    <!-- ========================================
-         SECTION AVANTAGES
-         ======================================== -->
+    <!-- SECTION AVANTAGES -->
     <section class="benefits" id="benefits">
         <div class="container">
             <div class="section-title">
@@ -1019,9 +1007,7 @@
         </div>
     </section>
 
-    <!-- ========================================
-         SECTION TÉMOIGNAGES
-         ======================================== -->
+    <!-- SECTION TÉMOIGNAGES -->
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
@@ -1098,9 +1084,7 @@
         </div>
     </section>
 
-    <!-- ========================================
-         SECTION CTA FINALE
-         ======================================== -->
+    <!-- SECTION APPEL À L'ACTION FINALE -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
@@ -1114,9 +1098,7 @@
         </div>
     </section>
 
-    <!-- ========================================
-         BOUTON FLOTTANT (WhatsApp)
-         ======================================== -->
+    <!-- BOUTON FLOTTANT WHATSAPP -->
     <div class="floating-btn">
         <a href="https://wa.me/22879923479" class="btn btn-primary btn-pulse" target="_blank" rel="noopener noreferrer">
             <span>💬</span>
@@ -1124,9 +1106,7 @@
         </a>
     </div>
 
-    <!-- ========================================
-         FOOTER
-         ======================================== -->
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Global Communication. Tous droits réservés.</p>
@@ -1138,12 +1118,10 @@
         </div>
     </footer>
 
-    <!-- ========================================
-         SCRIPT JAVASCRIPT
-         ======================================== -->
+    <!-- JAVASCRIPT - TOUTES LES FONCTIONNALITÉS -->
     <script>
         /* ========================================
-           DARK MODE TOGGLE
+           1. MODE SOMBRE / CLAIR
            ======================================== */
         const themeToggle = document.getElementById('themeToggle');
         const htmlElement = document.documentElement;
@@ -1167,7 +1145,7 @@
         }
 
         /* ========================================
-           SCROLL ANIMATIONS
+           2. ANIMATIONS AU SCROLL
            ======================================== */
         const observerOptions = {
             threshold: 0.1,
@@ -1188,7 +1166,7 @@
         });
 
         /* ========================================
-           SMOOTH SCROLL NAVIGATION
+           3. NAVIGATION FLUIDE
            ======================================== */
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1207,21 +1185,17 @@
         });
 
         /* ========================================
-           RIPPLE EFFECT
+           4. EFFET RIPPLE AU CLIC
            ======================================== */
         const buttons = document.querySelectorAll('.btn');
         buttons.forEach(button => {
             button.addEventListener('click', function(e) {
-                const ripple = document.createElement('span');
                 const rect = this.getBoundingClientRect();
                 const size = Math.max(rect.width, rect.height);
                 const x = e.clientX - rect.left - size / 2;
                 const y = e.clientY - rect.top - size / 2;
 
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-
+                // Vibration au clic
                 if (navigator.vibrate) {
                     navigator.vibrate(10);
                 }
@@ -1229,7 +1203,7 @@
         });
 
         /* ========================================
-           HOVER EFFECTS
+           5. HOVER SUR LES CARTES
            ======================================== */
         const stepCards = document.querySelectorAll('.step-card');
         stepCards.forEach(card => {
@@ -1242,9 +1216,8 @@
         });
 
         /* ========================================
-           HEADER SCROLL EFFECT
+           6. EFFET SUR LE HEADER AU SCROLL
            ======================================== */
-        let lastScrollTop = 0;
         const header = document.querySelector('header');
 
         window.addEventListener('scroll', function() {
@@ -1255,12 +1228,10 @@
             } else {
                 header.style.boxShadow = 'var(--box-shadow-soft)';
             }
-            
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         });
 
         /* ========================================
-           CTA BUTTONS REDIRECT
+           7. BOUTONS CTA -> WHATSAPP
            ======================================== */
         const heroCTA = document.getElementById('hero-cta');
         const ctaFinal = document.getElementById('cta-final');
@@ -1279,7 +1250,7 @@
         }
 
         /* ========================================
-           ANIMATION DE COMPTEUR
+           8. ANIMATION COMPTEUR (STATISTIQUES)
            ======================================== */
         const statsItems = document.querySelectorAll('.stat-item h3');
         let animated = false;
@@ -1319,7 +1290,7 @@
         });
 
         /* ========================================
-           INITIALIZATION LOG
+           9. INITIALISATION
            ======================================== */
         window.addEventListener('load', () => {
             console.log('🚀 Global Communication - Site chargé avec succès !');
